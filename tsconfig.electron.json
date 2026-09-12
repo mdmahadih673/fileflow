@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "outDir": "./dist-electron",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["electron/**/*", "src/types/**/*"],
+  "exclude": ["electron/preload.ts"]
+}

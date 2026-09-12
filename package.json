@@ -1,0 +1,52 @@
+{
+  "name": "fileflow",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist-electron/electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"tsc -p tsconfig.electron.json -w\" \"wait-on tcp:5173 && npm run copy-preload && electron .\"",
+    "copy-preload": "node scripts/copy-preload.mjs",
+    "build": "tsc -b && tsc -p tsconfig.electron.json && npm run copy-preload && vite build && electron-builder",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.fileflow.app",
+    "productName": "FileFlow",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.45.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.5.6",
+    "concurrently": "^10.0.5",
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.81.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "wait-on": "^9.1.0"
+  }
+}
